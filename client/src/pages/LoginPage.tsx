@@ -18,58 +18,65 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-background">
-      {/* Left Panel */}
-      <div className="relative hidden lg:flex flex-col justify-between p-12 bg-[#0a2e18] text-white overflow-hidden">
-        {/* Abstract Background pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M0 0 L100 100 L100 0 Z" fill="currentColor" />
-            <path d="M0 100 L100 0 L0 0 Z" fill="rgba(255,255,255,0.1)" />
-          </svg>
+      {/* Left Panel - Brand */}
+      <div className="relative hidden lg:flex flex-col justify-between p-12 bg-[#0c2a14] text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-white/10 -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-white/10 translate-y-1/3 -translate-x-1/4" />
         </div>
 
-        <div className="relative z-10">
-          <div className="flex items-center gap-3 text-2xl font-bold font-display">
-            <Trophy className="w-8 h-8 text-yellow-400" />
-            ZRU Sponsorship
+        <div className="relative z-10 flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-md bg-yellow-500 text-yellow-950">
+            <Trophy className="h-5 w-5" />
           </div>
+          <span className="text-lg font-bold">ZRU Sponsorship</span>
         </div>
 
-        <div className="relative z-10 max-w-lg">
-          <h1 className="text-5xl font-display font-bold mb-6 leading-tight">
+        <div className="relative z-10 max-w-md space-y-4">
+          <h1 className="text-4xl font-bold leading-tight tracking-tight">
             Manage the Future of Zimbabwean Rugby
           </h1>
-          <p className="text-lg opacity-80 leading-relaxed">
-            The all-in-one platform for tracking sponsorships, managing partner relationships, and driving growth for the Sables, Cheetahs, and Junior programs.
+          <p className="text-base text-white/70 leading-relaxed">
+            Track sponsorships, manage partner relationships, and drive growth
+            for the Sables, Cheetahs, and Junior programmes.
           </p>
         </div>
 
-        <div className="relative z-10 text-sm opacity-60">
-          © 2024 Zimbabwe Rugby Union. Authorized personnel only.
-        </div>
+        <p className="relative z-10 text-xs text-white/40">
+          &copy; {new Date().getFullYear()} Zimbabwe Rugby Union
+        </p>
       </div>
 
-      {/* Right Panel */}
+      {/* Right Panel - Login */}
       <div className="flex flex-col items-center justify-center p-8 lg:p-12">
         <div className="w-full max-w-sm space-y-8">
-          <div className="text-center lg:text-left">
-            <h2 className="text-3xl font-display font-bold text-foreground">Welcome back</h2>
-            <p className="mt-2 text-muted-foreground">Sign in to access your dashboard</p>
+          <div className="lg:hidden flex items-center gap-3 mb-4">
+            <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
+              <Trophy className="h-5 w-5" />
+            </div>
+            <span className="text-lg font-bold">ZRU Sponsorship</span>
           </div>
 
-          <div className="space-y-4">
-            <Button 
-              className="w-full h-12 text-base font-semibold shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all"
-              onClick={() => window.location.href = "/api/login"}
-            >
-              Sign in with Replit Auth
-              <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-            
-            <p className="text-xs text-center text-muted-foreground px-8">
-              By signing in, you agree to our Terms of Service and Privacy Policy.
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight">Welcome back</h2>
+            <p className="text-sm text-muted-foreground mt-1">
+              Sign in to access your dashboard
             </p>
           </div>
+
+          <Button
+            className="w-full"
+            onClick={() => (window.location.href = "/api/login")}
+            data-testid="button-login"
+          >
+            Sign in with Replit Auth
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+
+          <p className="text-[11px] text-center text-muted-foreground">
+            Authorized personnel only. By signing in you agree to our Terms of
+            Service and Privacy Policy.
+          </p>
         </div>
       </div>
     </div>

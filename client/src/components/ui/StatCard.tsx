@@ -1,3 +1,4 @@
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { LucideIcon } from "lucide-react";
 
@@ -16,32 +17,27 @@ interface StatCardProps {
 
 export function StatCard({ title, value, icon: Icon, description, trend, className }: StatCardProps) {
   return (
-    <div className={cn(
-      "bg-card rounded-2xl p-6 border border-border shadow-sm hover:shadow-md transition-all duration-300",
-      className
-    )}>
-      <div className="flex items-center justify-between">
-        <div className="p-2.5 bg-primary/10 rounded-xl text-primary">
-          <Icon className="w-6 h-6" />
+    <Card className={cn("p-5", className)} data-testid={`stat-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+      <div className="flex items-start justify-between gap-3 flex-wrap">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10">
+          <Icon className="h-5 w-5 text-primary" />
         </div>
         {trend && (
-          <div className={cn(
-            "flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full",
-            trend.positive ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+          <span className={cn(
+            "inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium",
+            trend.positive ? "bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-400" : "bg-red-50 text-red-700 dark:bg-red-950 dark:text-red-400"
           )}>
-            <span>{trend.positive ? '+' : ''}{trend.value}%</span>
-            <span className="opacity-70">{trend.label}</span>
-          </div>
+            {trend.positive ? "+" : ""}{trend.value}%
+          </span>
         )}
       </div>
-      
-      <div className="mt-5">
-        <p className="text-sm font-medium text-muted-foreground">{title}</p>
-        <h3 className="text-2xl font-bold font-display mt-1 text-foreground">{value}</h3>
+      <div className="mt-4 space-y-1">
+        <p className="text-sm text-muted-foreground">{title}</p>
+        <p className="text-2xl font-bold tracking-tight">{value}</p>
         {description && (
-          <p className="text-sm text-muted-foreground mt-1 opacity-80">{description}</p>
+          <p className="text-xs text-muted-foreground">{description}</p>
         )}
       </div>
-    </div>
+    </Card>
   );
 }
