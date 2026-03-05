@@ -26,6 +26,15 @@ Preferred communication style: Simple, everyday language.
 
 The frontend follows a pages-based structure with shared layout components (`AppLayout` with collapsible sidebar). Custom hooks (`use-partners`, `use-deals`, `use-interactions`, `use-reports`, `use-auth`) encapsulate all API communication using React Query.
 
+Key pages:
+- `Dashboard.tsx` — Stats, tier cards, sector pie chart, funding bar chart
+- `PartnersList.tsx` — Card grid of partner organizations
+- `PartnerDetail.tsx` — Full partner details with contact info, interest/alignment, deals sidebar (route: `/partners/:id`)
+- `PartnerWizard.tsx` — Multi-step form to create a partner (route: `/partners/new`)
+- `DealsList.tsx` — Table of deals with status, tier, value, probability (route: `/deals`)
+- `DealDetail.tsx` — Deal details with status change dropdown, financials, dates, partner link, interactions (route: `/deals/:id`)
+- `LoginPage.tsx` — Replit Auth login
+
 ### Backend
 
 - **Runtime**: Node.js with Express

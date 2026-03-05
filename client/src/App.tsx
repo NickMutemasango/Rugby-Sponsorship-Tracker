@@ -11,6 +11,7 @@ import Dashboard from "@/pages/Dashboard";
 import PartnersList from "@/pages/PartnersList";
 import PartnerWizard from "@/pages/PartnerWizard";
 import DealsList from "@/pages/DealsList";
+import DealDetail from "@/pages/DealDetail";
 import PartnerDetail from "@/pages/PartnerDetail";
 import LoginPage from "@/pages/LoginPage";
 import { Loader2 } from "lucide-react";
@@ -61,6 +62,10 @@ function Router() {
 
       <Route path="/deals">
         <ProtectedRoute component={DealsList} />
+      </Route>
+
+      <Route path="/deals/:id">
+        <ProtectedRoute component={DealDetail} />
       </Route>
 
       <Route path="/reports">
